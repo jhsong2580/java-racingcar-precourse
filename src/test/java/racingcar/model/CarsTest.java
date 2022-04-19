@@ -36,6 +36,7 @@ public class CarsTest extends NsTest {
         Cars cars = Cars.createCars(input);
         assertThat(cars).isInstanceOf(Cars.class);
     }
+
     @ParameterizedTest
     @ValueSource(strings = {"t1,t2,,t4,t5","","tttttt,tttt,tttt,tttt,tttt"})
     public void 문자열로부터_차생성하기_실패(String input){
@@ -68,9 +69,5 @@ public class CarsTest extends NsTest {
                 4,2,8,
                 2,4,7
         );
-
-
-
-
     }
 }
