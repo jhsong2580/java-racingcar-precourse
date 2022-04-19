@@ -18,6 +18,10 @@ public class Car {
         return new Car(0,name);
     }
 
+    public String getName() {
+        return name;
+    }
+
     private static void checkCarNameLength(String name) {
         if(name.length()>NAME_MAX_LENGTH || name.length()<NAME_MIN_LENGTH)
             throw new IllegalArgumentException("차 이름은 5글자를 넘을수 없습니다");
