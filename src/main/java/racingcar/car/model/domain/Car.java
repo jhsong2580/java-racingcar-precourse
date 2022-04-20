@@ -13,9 +13,9 @@ public class Car {
         this.name = name;
     }
 
-    public static Car createCar(String name){
+    public static Car createCar(String name) {
         checkCarNameLength(name);
-        return new Car(0,name);
+        return new Car(0, name);
     }
 
     public String getName() {
@@ -23,12 +23,12 @@ public class Car {
     }
 
     private static void checkCarNameLength(String name) {
-        if(name.length()>NAME_MAX_LENGTH || name.length()<NAME_MIN_LENGTH)
+        if (name.length() > NAME_MAX_LENGTH || name.length() < NAME_MIN_LENGTH)
             throw new IllegalArgumentException("차 이름은 5글자를 넘을수 없습니다");
     }
 
     public int move(int input) {
-        location += getIntFromBoolean(input>=CAR_MOVE_CONDITION);
+        location += getIntFromBoolean(input >= CAR_MOVE_CONDITION);
         return location;
     }
 
