@@ -41,4 +41,28 @@ public class Cars {
         }
         return result;
     }
+
+    public List<String> electWinner() {
+        int maxLocation = getMaxLocation();
+        return getWinnerList(maxLocation);
+    }
+
+    private ArrayList<String> getWinnerList(int scoreForWin) {
+        String CAR_IS_NOTMATCHING = "";
+        ArrayList<String> winnerList = new ArrayList<>();
+        for (Car car : cars) {
+            String carName = car.getNameEqualExactlyLocation(scoreForWin);
+            winnerList.add(carName);
+        }
+        winnerList.removeIf(s -> s.equals(CAR_IS_NOTMATCHING));
+        return winnerList;
+    }
+
+    private int getMaxLocation() {
+        int maxLocation = -1;
+        for (Car car : cars) {
+            maxLocation = Math.max(maxLocation, car.getLocation());
+        }
+        return maxLocation;
+    }
 }
