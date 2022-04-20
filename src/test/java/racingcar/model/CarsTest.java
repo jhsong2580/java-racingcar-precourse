@@ -15,6 +15,7 @@ import static camp.nextstep.edu.missionutils.test.Assertions.*;
 import static camp.nextstep.edu.missionutils.test.Assertions.assertRandomNumberInRangeTest;
 
 import java.util.*;
+import java.util.stream.Collectors;
 
 import static org.assertj.core.api.Assertions.*;
 
@@ -23,6 +24,24 @@ public class CarsTest extends NsTest {
     @BeforeEach
     public void initCarsTest(){
         cars = Cars.createCars("c1,c2,c3");
+
+        assertRandomNumberInRangeTest(
+                ()->{
+                    LinkedHashMap<String, Integer> move = null;
+                    for(int i=0;i<9;i++) {
+                        move = cars.move();
+                    }
+                },
+                3,8,5,
+                5,5,6,
+                2,1,2,
+                1,7,5,
+                9,9,4,
+                6,2,1,
+                7,0,2,
+                4,2,8,
+                2,4,7
+        );
     }
 
     @Override
@@ -69,5 +88,32 @@ public class CarsTest extends NsTest {
                 4,2,8,
                 2,4,7
         );
+    }
+    @Test
+    public void Car우승자_단일추출 (){
+        assertThat(cars.electWinner())
+                .isEqualTo(Arrays.asList("c3"));
+    }
+
+    @Test
+    public void Car우승자_다수추출 (){
+        assertRandomNumberInRangeTest(
+                ()->{
+                    cars.move();
+                },
+                3,4,3
+        );
+        assertThat(cars.electWinner())
+                .isEqualTo(Arrays.asList("c2", "c3"));
+
+        assertRandomNumberInRangeTest(
+                ()->{
+                    cars.move();
+                },
+                4,3,3
+        );
+        assertThat(cars.electWinner())
+                .isEqualTo(Arrays.asList("c1","c2", "c3"));
+
     }
 }
