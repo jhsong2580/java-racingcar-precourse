@@ -18,12 +18,17 @@ public class ValidateCarNameInputCheckCarNameLength implements Validator {
         boolean validateResult = true;
         String[] names = input.split(GlobalParams.CAR_NAMES_SPLITER);
         for (int i = 0; i < names.length && validateResult; i++) {
-            if (names[i].length() > NAME_MAX_LENGTH || names[i].length() < NAME_MIN_LENGTH) {
-                validateResult = false;
-                System.out.println(ERROR_MESSAGE);
-            }
+            validateResult = validateResult && validateNameLength(names[i]);
         }
         return validateResult;
+    }
+
+    private boolean validateNameLength(String name) {
+        if (name.length() > NAME_MAX_LENGTH || name.length() < NAME_MIN_LENGTH) {
+            System.out.println(ERROR_MESSAGE);
+            return false;
+        }
+        return true;
     }
 
 
