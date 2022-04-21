@@ -1,9 +1,7 @@
 package racingcar.car.model;
 
 import racingcar.car.GameStatus;
-import racingcar.car.model.validator.ValidateRacingNumberInputRangeOverOne;
-import racingcar.car.model.validator.ValidateRacingNumberIntputCannotParseInteger;
-import racingcar.car.model.validator.Validator;
+import racingcar.car.model.validator.*;
 import racingcar.car.view.RacingView;
 
 import java.util.ArrayList;
@@ -14,9 +12,15 @@ public class RacingModel {
     private final RacingView racingView;
 
     protected RacingModel() {
+        getValidators();
+        racingView = RacingView.createRacingView();
+    }
+
+    private void getValidators() {
         validators.add(new ValidateRacingNumberIntputCannotParseInteger());
         validators.add(new ValidateRacingNumberInputRangeOverOne());
-        racingView = RacingView.createRacingView();
+        validators.add(new ValidateCarNameInputSplitResultSizeMoreThanZero());
+        validators.add(new ValidateCarNameInputCheckCarNameLength());
     }
 
     public static RacingModel createModel() {
