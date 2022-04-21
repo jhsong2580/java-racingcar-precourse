@@ -34,7 +34,7 @@ public class Cars {
         return result;
     }
 
-    public List<String> electWinner() {
+    public ArrayList<String> electWinner() {
         int maxLocation = getMaxLocation();
         return getWinnerList(maxLocation);
     }
