@@ -8,6 +8,7 @@ public class RacingController {
     private final RacingView racingView;
     private final RacingModel racingModel;
     private final String GET_RACING_NUMBER_ERROR = "-1";
+    private final String GET_CAR_NAME_ERROR = "";
 
     protected RacingController() {
         this.racingView = RacingView.createRacingView();
@@ -29,4 +30,18 @@ public class RacingController {
         }
         return racingNumber;
     }
+
+    public String getCarNames() {
+        String carNames = GET_CAR_NAME_ERROR;
+        while (carNames.equals(GET_CAR_NAME_ERROR)) {
+            try {
+                carNames = racingModel.validateInput(racingView.getCarNames(), GameStatus.GET_CAR_NAME);
+            } catch (IllegalArgumentException e) {
+                carNames = GET_CAR_NAME_ERROR;
+            }
+
+        }
+        return carNames;
+    }
+
 }
