@@ -2,9 +2,10 @@ package racingcar.car.model.validator;
 
 import racingcar.car.GameStatus;
 import racingcar.car.GlobalParams;
+import racingcar.car.error.Error;
 
 public class ValidateCarNameInputCheckCarNameLength implements Validator {
-    private final String ERROR_MESSAGE = "[ERROR] 차 이름은 1~5글자여야 합니다";
+    private final String ERROR_MESSAGE = Error.createErrorComment("차 이름은 1~5글자여야 합니다.");
     private final int NAME_MAX_LENGTH = 5;
     private final int NAME_MIN_LENGTH = 1;
 
