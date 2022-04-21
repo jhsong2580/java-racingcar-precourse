@@ -7,8 +7,7 @@ import racingcar.car.view.RacingView;
 public class RacingController {
     private final RacingView racingView;
     private final RacingModel racingModel;
-    private final String GET_RACING_NUMBER_ERROR = "-1";
-    private final String GET_CAR_NAME_ERROR = "";
+    private final String ERROR_INPUT = "";
 
     protected RacingController() {
         this.racingView = RacingView.createRacingView();
@@ -19,29 +18,15 @@ public class RacingController {
         return new RacingController();
     }
 
-    public String getRacingNumber() {
-        String racingNumber = GET_RACING_NUMBER_ERROR;
-        while (racingNumber.equals(GET_RACING_NUMBER_ERROR)) {
+    private String getInput(GameStatus gameStatus) {
+        String input = ERROR_INPUT;
+        while (input.equals(ERROR_INPUT)) {
             try {
-                racingNumber = racingModel.validateInput(racingView.getRacingNumber(), GameStatus.GET_RACING_NUMBER);
+                input = racingModel.validateInput(racingView.getInput(gameStatus), gameStatus);
             } catch (IllegalArgumentException e) {
-                racingNumber = GET_RACING_NUMBER_ERROR;
+                input = ERROR_INPUT;
             }
         }
-        return racingNumber;
+        return input;
     }
-
-    public String getCarNames() {
-        String carNames = GET_CAR_NAME_ERROR;
-        while (carNames.equals(GET_CAR_NAME_ERROR)) {
-            try {
-                carNames = racingModel.validateInput(racingView.getCarNames(), GameStatus.GET_CAR_NAME);
-            } catch (IllegalArgumentException e) {
-                carNames = GET_CAR_NAME_ERROR;
-            }
-
-        }
-        return carNames;
-    }
-
 }
