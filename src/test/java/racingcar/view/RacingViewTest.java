@@ -4,6 +4,7 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
+import racingcar.car.GameStatus;
 import racingcar.car.view.RacingView;
 
 import java.io.*;
@@ -28,7 +29,7 @@ public class RacingViewTest {
         OutputStream out = generateOutputStream();
 
         //when
-        String carNames = racingView.getCarNames();
+        String carNames = racingView.getInput(GameStatus.GET_CAR_NAME);
 
         //then
         assertThat(carNames)
@@ -46,7 +47,7 @@ public class RacingViewTest {
         InputStream in = generateInputStream(iSay);
         OutputStream out = generateOutputStream();
         //when
-        String racingNumber = racingView.getRacingNumber();
+        String racingNumber = racingView.getInput(GameStatus.GET_RACING_NUMBER);
         //then
         assertThat(racingNumber)
                 .isEqualTo(iSay);
