@@ -2,6 +2,7 @@ package racingcar.car.view;
 
 import racingcar.car.GameStatus;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -47,5 +48,8 @@ public class RacingView {
         System.out.println(carName + " : " + stringBuilder.toString());
     }
 
+    public void printWinner(ArrayList<String> winnerList) {
+        System.out.println("최종 우승자: " + String.join(", ", winnerList));
+    }
 
 }

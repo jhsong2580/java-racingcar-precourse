@@ -8,6 +8,7 @@ import racingcar.car.GameStatus;
 import racingcar.car.view.RacingView;
 
 import java.io.*;
+import java.util.ArrayList;
 import java.util.HashMap;
 
 import static org.assertj.core.api.Assertions.assertThat;
@@ -68,6 +69,33 @@ public class RacingViewTest {
         //then
         assertThat(out.toString().trim())
                 .isEqualTo("c1 : -----\r\n" + "c2 : --\r\n".trim());
+    }
+
+    @Test
+    public void 우승자_실행_단일출력() {
+        //given
+        ArrayList<String> winners = new ArrayList<>();
+        winners.add("c1");
+        OutputStream out = generateOutputStream();
+        //when
+        racingView.printWinner(winners);
+        //then
+        assertThat(out.toString().trim())
+                .isEqualTo("최종 우승자: c1\r\n".trim());
+    }
+
+    @Test
+    public void 우승자_실행_다수출력() {
+        //given
+        ArrayList<String> winners = new ArrayList<>();
+        winners.add("c1");
+        winners.add("c2");
+        OutputStream out = generateOutputStream();
+        //when
+        racingView.printWinner(winners);
+        //then
+        assertThat(out.toString().trim())
+                .isEqualTo("최종 우승자: c1, c2\r\n".trim());
     }
 
     private OutputStream generateOutputStream() {
