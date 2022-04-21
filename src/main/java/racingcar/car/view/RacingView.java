@@ -15,4 +15,8 @@ public class RacingView {
         return readLine();
     }
 
+    public String getRacingNumber() {
+        System.out.println("시도할 횟수는 몇회인가요?");
+        return readLine();
+    }
 }

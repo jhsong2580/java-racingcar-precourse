@@ -2,6 +2,8 @@ package racingcar.view;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.ValueSource;
 import racingcar.car.view.RacingView;
 
 import java.io.*;
@@ -33,6 +35,23 @@ public class RacingViewTest {
                 .isEqualTo(iSay);
         assertThat(out.toString().trim())
                 .isEqualTo((serverSay).trim());
+    }
+
+    @ParameterizedTest
+    @ValueSource(strings = {"5", "a", "-1", " "})
+    public void 시도횟수입력받기(String input) {
+        //given
+        String serverSay = "시도할 횟수는 몇회인가요?";
+        String iSay = input;
+        InputStream in = generateInputStream(iSay);
+        OutputStream out = generateOutputStream();
+        //when
+        String racingNumber = racingView.getRacingNumber();
+        //then
+        assertThat(racingNumber)
+                .isEqualTo(iSay);
+        assertThat(out.toString().trim())
+                .isEqualTo(serverSay);
     }
 
     private OutputStream generateOutputStream() {
