@@ -8,6 +8,7 @@ import racingcar.car.GameStatus;
 import racingcar.car.view.RacingView;
 
 import java.io.*;
+import java.util.HashMap;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
@@ -55,6 +56,20 @@ public class RacingViewTest {
                 .isEqualTo(serverSay);
     }
 
+    @Test
+    public void 차수별_실행결과_출력() {
+        //given
+        HashMap<String, Integer> moveProgress = new HashMap<>();
+        moveProgress.put("c1", 5);
+        moveProgress.put("c2", 2);
+        OutputStream out = generateOutputStream();
+        //when
+        racingView.printProgress(moveProgress);
+        //then
+        assertThat(out.toString().trim())
+                .isEqualTo("c1 : -----\r\n" + "c2 : --\r\n".trim());
+    }
+
     private OutputStream generateOutputStream() {
         OutputStream out = new ByteArrayOutputStream();
         System.setOut(new PrintStream(out));
@@ -67,4 +82,5 @@ public class RacingViewTest {
         System.setIn(in);
         return in;
     }
+
 }

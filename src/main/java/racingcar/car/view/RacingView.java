@@ -2,6 +2,9 @@ package racingcar.car.view;
 
 import racingcar.car.GameStatus;
 
+import java.util.HashMap;
+import java.util.Map;
+
 import static camp.nextstep.edu.missionutils.Console.readLine;
 
 public class RacingView {
@@ -29,4 +32,20 @@ public class RacingView {
         System.out.println("시도할 횟수는 몇회인가요?");
         return readLine();
     }
+
+    public void printProgress(HashMap<String, Integer> moveProgress) {
+        for (Map.Entry<String, Integer> progressPerCar : moveProgress.entrySet()) {
+            printProgressPerCar(progressPerCar.getKey(), progressPerCar.getValue());
+        }
+        System.out.println();
+    }
+
+    private void printProgressPerCar(String carName, int location) {
+        StringBuilder stringBuilder = new StringBuilder();
+        for (int i = 0; i < location; i++)
+            stringBuilder.append("-");
+        System.out.println(carName + " : " + stringBuilder.toString());
+    }
+
+
 }
