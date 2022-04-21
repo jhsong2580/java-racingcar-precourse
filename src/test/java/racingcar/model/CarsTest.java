@@ -1,23 +1,19 @@
 package racingcar.model;
 
 import camp.nextstep.edu.missionutils.test.NsTest;
-import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
-import org.junit.jupiter.params.provider.CsvSource;
 import org.junit.jupiter.params.provider.ValueSource;
 import racingcar.Application;
-import racingcar.car.model.domain.Car;
 import racingcar.car.model.domain.Cars;
 
-import static camp.nextstep.edu.missionutils.test.Assertions.*;
+import java.util.Arrays;
+import java.util.LinkedHashMap;
+
 import static camp.nextstep.edu.missionutils.test.Assertions.assertRandomNumberInRangeTest;
-
-import java.util.*;
-import java.util.stream.Collectors;
-
-import static org.assertj.core.api.Assertions.*;
+import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.Assertions.entry;
 
 public class CarsTest extends NsTest {
     private Cars cars;
@@ -27,9 +23,8 @@ public class CarsTest extends NsTest {
 
         assertRandomNumberInRangeTest(
                 ()->{
-                    LinkedHashMap<String, Integer> move = null;
                     for(int i=0;i<9;i++) {
-                        move = cars.move();
+                        cars.move();
                     }
                 },
                 3,8,5,
@@ -56,37 +51,19 @@ public class CarsTest extends NsTest {
         assertThat(cars).isInstanceOf(Cars.class);
     }
 
-    @ParameterizedTest
-    @ValueSource(strings = {"t1,t2,,t4,t5","","tttttt,tttt,tttt,tttt,tttt"})
-    public void 문자열로부터_차생성하기_실패(String input){
-        assertThatThrownBy(() -> Cars.createCars(input))
-                .isInstanceOf(IllegalArgumentException.class);
-    }
-
     @Test
     public void Cars를통한CarMove호출(){
-        assertRandomNumberInRangeTest(
-                ()->{
-                    LinkedHashMap<String, Integer> move = null;
-                    for(int i=0;i<9;i++) {
-                         move = cars.move();
-                    }
-                    assertThat(move).containsExactly(
-                            entry("c1",5),
-                            entry("c2",5),
-                            entry("c3",6)
-                    );
 
+        assertRandomNumberInRangeTest(
+                () -> {
+                    LinkedHashMap<String, Integer> move = move = cars.move();
+                    assertThat(move).containsExactly(
+                            entry("c1", 6),
+                            entry("c2", 6),
+                            entry("c3", 7)
+                    );
                 },
-            3,8,5,
-                5,5,6,
-                2,1,2,
-                1,7,5,
-                9,9,4,
-                6,2,1,
-                7,0,2,
-                4,2,8,
-                2,4,7
+                8, 9, 4
         );
     }
     @Test

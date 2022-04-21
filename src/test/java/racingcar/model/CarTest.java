@@ -9,7 +9,7 @@ import racingcar.car.model.domain.Car;
 import java.util.Arrays;
 import java.util.List;
 
-import static org.assertj.core.api.Assertions.*;
+import static org.assertj.core.api.Assertions.assertThat;
 
 public class CarTest {
     Car t1;
@@ -25,10 +25,6 @@ public class CarTest {
     public void Car생성하기_이름은5글자이하 (){
         assertThat(Car.createCar("POLIV")).isInstanceOf(Car.class);
         assertThat(Car.createCar("pol")).isInstanceOf(Car.class);
-        assertThatThrownBy(() -> Car.createCar("testError"))
-                .isInstanceOf(IllegalArgumentException.class);
-        assertThatThrownBy(() -> Car.createCar(""))
-                .isInstanceOf(IllegalArgumentException.class);
     }
 
     @ParameterizedTest
