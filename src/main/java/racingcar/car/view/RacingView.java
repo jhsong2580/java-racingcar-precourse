@@ -1,6 +1,7 @@
 package racingcar.car.view;
 
 import racingcar.car.GameStatus;
+import racingcar.car.GlobalParams;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -25,12 +26,12 @@ public class RacingView {
     }
 
     private String getCarNames() {
-        System.out.println("경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)");
+        System.out.println(GlobalParams.GUIDE_FOR_INPUT_CARNAME);
         return readLine();
     }
 
     private String getRacingNumber() {
-        System.out.println("시도할 횟수는 몇회인가요?");
+        System.out.println(GlobalParams.GUIDE_FOR_INPUT_RACINGNUMBER);
         return readLine();
     }
 
@@ -44,12 +45,12 @@ public class RacingView {
     private void printProgressPerCar(String carName, int location) {
         StringBuilder stringBuilder = new StringBuilder();
         for (int i = 0; i < location; i++)
-            stringBuilder.append("-");
-        System.out.println(carName + " : " + stringBuilder.toString());
+            stringBuilder.append(GlobalParams.PROGRESS_BAR);
+        System.out.println(carName + GlobalParams.PROGRESS_SPLITER + stringBuilder.toString());
     }
 
     public void printWinner(ArrayList<String> winnerList) {
-        System.out.println("최종 우승자: " + String.join(", ", winnerList));
+        System.out.println(GlobalParams.WINNER_GUIDE + String.join(GlobalParams.WINNER_SPLITER, winnerList));
     }
 
 }

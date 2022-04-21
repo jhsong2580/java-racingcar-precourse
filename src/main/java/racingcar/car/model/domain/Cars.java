@@ -1,5 +1,7 @@
 package racingcar.car.model.domain;
 
+import racingcar.car.GlobalParams;
+
 import java.util.ArrayList;
 import java.util.LinkedHashMap;
 import java.util.List;
@@ -14,7 +16,7 @@ public class Cars {
     }
 
     public static Cars createCars(String input) {
-        String[] names = input.split(",");
+        String[] names = input.split(GlobalParams.CAR_NAMES_SPLITER);
         return new Cars(createCarsByInput(names));
     }
 
@@ -29,7 +31,7 @@ public class Cars {
     public LinkedHashMap<String, Integer> move() {
         LinkedHashMap<String, Integer> result = new LinkedHashMap<>();
         for (Car car : cars) {
-            result.put(car.getName(), car.move(pickNumberInRange(0, 9)));
+            result.put(car.getName(), car.move(pickNumberInRange(GlobalParams.RANGE_FOR_CAR_MOVING_MIN, GlobalParams.RANGE_FOR_CAR_MOVING_MAX)));
         }
         return result;
     }
@@ -40,13 +42,12 @@ public class Cars {
     }
 
     private ArrayList<String> getWinnerList(int scoreForWin) {
-        String CAR_IS_NOTMATCHING = "";
         ArrayList<String> winnerList = new ArrayList<>();
         for (Car car : cars) {
             String carName = car.getNameEqualExactlyLocation(scoreForWin);
             winnerList.add(carName);
         }
-        winnerList.removeIf(s -> s.equals(CAR_IS_NOTMATCHING));
+        winnerList.removeIf(s -> s.equals(GlobalParams.CAR_IS_NOTMATCHING));
         return winnerList;
     }
 

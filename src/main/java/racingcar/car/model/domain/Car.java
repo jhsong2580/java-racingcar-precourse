@@ -1,5 +1,7 @@
 package racingcar.car.model.domain;
 
+import racingcar.car.GlobalParams;
+
 public class Car {
     private final int CAR_MOVE_CONDITION = 4;
     private int location;
@@ -10,12 +12,12 @@ public class Car {
         this.name = name;
     }
 
-    public int getLocation() {
-        return location;
-    }
-
     public static Car createCar(String name) {
         return new Car(0, name);
+    }
+
+    public int getLocation() {
+        return location;
     }
 
     public String getName() {
@@ -34,6 +36,6 @@ public class Car {
     public String getNameEqualExactlyLocation(int maxLocation) {
         if (location == maxLocation)
             return name;
-        return "";
+        return GlobalParams.CAR_IS_NOTMATCHING;
     }
 }
