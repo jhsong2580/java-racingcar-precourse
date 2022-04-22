@@ -6,7 +6,7 @@ import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
 import racingcar.Application;
-import racingcar.car.model.domain.Cars;
+import racingcar.car.model.domain.CarsManager;
 
 import java.util.Arrays;
 import java.util.LinkedHashMap;
@@ -15,11 +15,11 @@ import static camp.nextstep.edu.missionutils.test.Assertions.assertRandomNumberI
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.entry;
 
-public class CarsTest extends NsTest {
-    private Cars cars;
+public class CarsManagerTest extends NsTest {
+    private CarsManager cars;
     @BeforeEach
     public void initCarsTest(){
-        cars = Cars.createCars("c1,c2,c3");
+        cars = CarsManager.createCars("c1,c2,c3");
 
         assertRandomNumberInRangeTest(
                 ()->{
@@ -47,8 +47,8 @@ public class CarsTest extends NsTest {
     @ParameterizedTest
     @ValueSource(strings = {"t1,t2,t3,t4,t5","t,t,t,t,t","ttttt,tttt,tttt,tttt,tttt"})
     public void 문자열로부터_차생성하기_정상동작 (String input){
-        Cars cars = Cars.createCars(input);
-        assertThat(cars).isInstanceOf(Cars.class);
+        CarsManager cars = CarsManager.createCars(input);
+        assertThat(cars).isInstanceOf(CarsManager.class);
     }
 
     @Test

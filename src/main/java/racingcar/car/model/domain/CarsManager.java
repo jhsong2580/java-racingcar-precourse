@@ -7,17 +7,17 @@ import java.util.LinkedHashMap;
 import java.util.List;
 
 import static camp.nextstep.edu.missionutils.Randoms.pickNumberInRange;
-
-public class Cars {
+ 
+public class CarsManager {
     private final List<Car> cars;
 
-    protected Cars(List<Car> cars) {
+    protected CarsManager(List<Car> cars) {
         this.cars = cars;
     }
 
-    public static Cars createCars(String input) {
+    public static CarsManager createCars(String input) {
         String[] names = input.split(Constant.CAR_NAMES_DELIMITER);
-        return new Cars(createCarsByInput(names));
+        return new CarsManager(createCarsByInput(names));
     }
 
     private static List<Car> createCarsByInput(String[] names) {
