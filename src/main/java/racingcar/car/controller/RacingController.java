@@ -26,11 +26,17 @@ public class RacingController {
     private String getInput(GameStatus gameStatus) {
         String input = ERROR_INPUT;
         while (input.equals(ERROR_INPUT)) {
-            try {
-                input = racingModel.validateInput(racingView.getInput(gameStatus), gameStatus);
-            } catch (IllegalArgumentException e) {
-                input = ERROR_INPUT;
-            }
+            input = validateInput(gameStatus);
+        }
+        return input;
+    }
+
+    private String validateInput(GameStatus gameStatus) {
+        String input;
+        try {
+            input = racingModel.validateInput(racingView.getInput(gameStatus), gameStatus);
+        } catch (IllegalArgumentException e) {
+            input = ERROR_INPUT;
         }
         return input;
     }
