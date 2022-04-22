@@ -56,7 +56,8 @@ public class CarsManagerTest extends NsTest {
 
     @Test
     public void Car우승자_단일추출() {
-        assertThat(cars.electWinner()).isEqualTo(Arrays.asList("c3"));
+        ArrayList<Car> winnerList = this.cars.electWinner();
+        assertThat(winnerList.get(0).getName()).isEqualTo("c3");
     }
 
     @Test
@@ -64,12 +65,16 @@ public class CarsManagerTest extends NsTest {
         assertRandomNumberInRangeTest(() -> {
             cars.move();
         }, 3, 4, 3);
-        assertThat(cars.electWinner()).isEqualTo(Arrays.asList("c2", "c3"));
+        ArrayList<Car> winnerList_1stTry = this.cars.electWinner();
+        assertThat(winnerList_1stTry.get(0).getName()).isEqualTo("c2");
+        assertThat(winnerList_1stTry.get(1).getName()).isEqualTo("c3");
 
         assertRandomNumberInRangeTest(() -> {
-            cars.move();
+            this.cars.move();
         }, 4, 3, 3);
-        assertThat(cars.electWinner()).isEqualTo(Arrays.asList("c1", "c2", "c3"));
-
+        ArrayList<Car> winnerList_2ndTry = this.cars.electWinner();
+        assertThat(winnerList_2ndTry.get(0).getName()).isEqualTo("c1");
+        assertThat(winnerList_2ndTry.get(1).getName()).isEqualTo("c2");
+        assertThat(winnerList_2ndTry.get(2).getName()).isEqualTo("c3");
     }
 }
