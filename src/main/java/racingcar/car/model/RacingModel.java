@@ -1,11 +1,11 @@
 package racingcar.car.model;
 
 import racingcar.car.GameStatus;
+import racingcar.car.model.domain.Car;
 import racingcar.car.model.domain.CarsManager;
 import racingcar.car.model.validator.*;
 
 import java.util.ArrayList;
-import java.util.LinkedHashMap;
 import java.util.List;
 
 public class RacingModel {
@@ -43,11 +43,11 @@ public class RacingModel {
         carsManager = new CarsManager(input);
     }
 
-    public LinkedHashMap<String, Integer> move() {
+    public ArrayList<Car> move() {
         return carsManager.move();
     }
 
-    public ArrayList<String> electWinner() {
+    public ArrayList<Car> electWinner() {
         return carsManager.electWinner();
     }
 }

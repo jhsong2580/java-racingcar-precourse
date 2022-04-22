@@ -12,8 +12,10 @@ public class Car {
         this.name = name;
     }
 
-    public static Car createCar(String name) {
-        return new Car(0, name);
+    public Car carDeepCopy() {
+        Car copyResult = new Car(this.name);
+        copyResult.location = this.location;
+        return copyResult;
     }
 
     public int getLocation() {

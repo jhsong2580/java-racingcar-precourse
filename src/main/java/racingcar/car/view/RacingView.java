@@ -2,10 +2,9 @@ package racingcar.car.view;
 
 import racingcar.car.Constant;
 import racingcar.car.GameStatus;
+import racingcar.car.model.domain.Car;
 
 import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.Map;
 
 import static camp.nextstep.edu.missionutils.Console.readLine;
 
@@ -29,22 +28,26 @@ public class RacingView {
         return readLine();
     }
 
-    public void printProgress(HashMap<String, Integer> moveProgress) {
-        for (Map.Entry<String, Integer> progressPerCar : moveProgress.entrySet()) {
-            printProgressPerCar(progressPerCar.getKey(), progressPerCar.getValue());
+    public void printProgress(ArrayList<Car> cars) {
+        for (Car car : cars) {
+            printProgressPerCar(car);
         }
         System.out.println();
     }
 
-    private void printProgressPerCar(String carName, int location) {
+    private void printProgressPerCar(Car car) {
         StringBuilder stringBuilder = new StringBuilder();
-        for (int i = 0; i < location; i++)
+        for (int i = 0; i < car.getLocation(); i++)
             stringBuilder.append(Constant.PROGRESS_BAR);
-        System.out.println(carName + Constant.PROGRESS_SPLITER + stringBuilder.toString());
+        System.out.println(car.getName() + Constant.PROGRESS_SPLITER + stringBuilder.toString());
     }
 
-    public void printWinner(ArrayList<String> winnerList) {
-        System.out.println(Constant.WINNER_GUIDE + String.join(Constant.WINNER_SPLITER, winnerList));
+    public void printWinner(ArrayList<Car> cars) {
+        ArrayList<String> winnerNames = new ArrayList<>();
+        for (Car car : cars) {
+            winnerNames.add(car.getName());
+        }
+        System.out.println(Constant.WINNER_GUIDE + String.join(Constant.WINNER_SPLITER, winnerNames));
     }
 
 }

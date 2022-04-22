@@ -24,27 +24,23 @@ public class CarsManager {
         return cars;
     }
 
-    public LinkedHashMap<String, Integer> move() {
+    public ArrayList<Car> move() {
         LinkedHashMap<String, Integer> result = new LinkedHashMap<>();
         for (Car car : cars) {
-            result.put(car.getName(), car.move(pickNumberInRange(Constant.RANGE_FOR_CAR_MOVING_MIN, Constant.RANGE_FOR_CAR_MOVING_MAX)));
+            car.move(pickNumberInRange(Constant.RANGE_FOR_CAR_MOVING_MIN, Constant.RANGE_FOR_CAR_MOVING_MAX));
         }
-        return result;
+        return carsDeepCopy();
     }
 
-    public ArrayList<String> electWinner() {
+    public ArrayList<Car> electWinner() {
         int maxLocation = getMaxLocation();
         return getWinnerList(maxLocation);
     }
 
-    private ArrayList<String> getWinnerList(int scoreForWin) {
-        ArrayList<String> winnerList = new ArrayList<>();
-        for (Car car : cars) {
-            String carName = car.getNameEqualExactlyLocation(scoreForWin);
-            winnerList.add(carName);
-        }
-        winnerList.removeIf(s -> s.equals(GlobalParams.CAR_IS_NOTMATCHING));
-        return winnerList;
+    private ArrayList<Car> getWinnerList(int scoreForWin) {
+        ArrayList<Car> carsCopy = carsDeepCopy();
+        carsCopy.removeIf(car -> car.getLocation() != scoreForWin);
+        return carsCopy;
     }
 
     private int getMaxLocation() {
@@ -53,5 +49,13 @@ public class CarsManager {
             maxLocation = Math.max(maxLocation, car.getLocation());
         }
         return maxLocation;
+    }
+
+    private ArrayList<Car> carsDeepCopy() {
+        ArrayList<Car> carsCopy = new ArrayList<>();
+        for (Car car : cars) {
+            carsCopy.add(car.carDeepCopy());
+        }
+        return carsCopy;
     }
 }

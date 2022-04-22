@@ -6,14 +6,14 @@ import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
 import racingcar.Application;
+import racingcar.car.model.domain.Car;
 import racingcar.car.model.domain.CarsManager;
 
+import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.LinkedHashMap;
 
 import static camp.nextstep.edu.missionutils.test.Assertions.assertRandomNumberInRangeTest;
 import static org.assertj.core.api.Assertions.assertThat;
-import static org.assertj.core.api.Assertions.entry;
 
 public class CarsManagerTest extends NsTest {
     private CarsManager cars;
@@ -43,10 +43,14 @@ public class CarsManagerTest extends NsTest {
 
     @Test
     public void Cars를통한CarMove호출() {
-
         assertRandomNumberInRangeTest(() -> {
-            LinkedHashMap<String, Integer> move = move = cars.move();
-            assertThat(move).containsExactly(entry("c1", 6), entry("c2", 6), entry("c3", 7));
+            ArrayList<Car> moveResult = cars.move();
+            assertThat(moveResult.get(0).getLocation())
+                    .isEqualTo(6);
+            assertThat(moveResult.get(1).getLocation())
+                    .isEqualTo(6);
+            assertThat(moveResult.get(2).getLocation())
+                    .isEqualTo(7);
         }, 8, 9, 4);
     }
 

@@ -14,7 +14,7 @@ public class RacingModelTest {
 
     @BeforeEach
     public void init() {
-        racingModel = RacingModel.createModel();
+        racingModel = new RacingModel();
     }
 
     @ParameterizedTest
