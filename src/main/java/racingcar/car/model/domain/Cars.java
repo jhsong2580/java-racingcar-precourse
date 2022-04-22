@@ -1,6 +1,6 @@
 package racingcar.car.model.domain;
 
-import racingcar.car.GlobalParams;
+import racingcar.car.Constant;
 
 import java.util.ArrayList;
 import java.util.LinkedHashMap;
@@ -16,7 +16,7 @@ public class Cars {
     }
 
     public static Cars createCars(String input) {
-        String[] names = input.split(GlobalParams.CAR_NAMES_SPLITER);
+        String[] names = input.split(Constant.CAR_NAMES_DELIMITER);
         return new Cars(createCarsByInput(names));
     }
 
@@ -31,7 +31,7 @@ public class Cars {
     public LinkedHashMap<String, Integer> move() {
         LinkedHashMap<String, Integer> result = new LinkedHashMap<>();
         for (Car car : cars) {
-            result.put(car.getName(), car.move(pickNumberInRange(GlobalParams.RANGE_FOR_CAR_MOVING_MIN, GlobalParams.RANGE_FOR_CAR_MOVING_MAX)));
+            result.put(car.getName(), car.move(pickNumberInRange(Constant.RANGE_FOR_CAR_MOVING_MIN, Constant.RANGE_FOR_CAR_MOVING_MAX)));
         }
         return result;
     }

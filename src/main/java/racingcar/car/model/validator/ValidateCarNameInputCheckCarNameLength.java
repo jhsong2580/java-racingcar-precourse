@@ -1,7 +1,7 @@
 package racingcar.car.model.validator;
 
 import racingcar.car.GameStatus;
-import racingcar.car.GlobalParams;
+import racingcar.car.Constant;
 import racingcar.car.error.Error;
 
 public class ValidateCarNameInputCheckCarNameLength implements Validator {
@@ -17,7 +17,7 @@ public class ValidateCarNameInputCheckCarNameLength implements Validator {
     @Override
     public boolean validate(String input) {
         boolean validateResult = true;
-        String[] names = input.split(GlobalParams.CAR_NAMES_SPLITER);
+        String[] names = input.split(Constant.CAR_NAMES_DELIMITER);
         for (int i = 0; i < names.length && validateResult; i++) {
             validateResult = validateResult && validateNameLength(names[i]);
         }

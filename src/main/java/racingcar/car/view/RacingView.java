@@ -1,7 +1,7 @@
 package racingcar.car.view;
 
 import racingcar.car.GameStatus;
-import racingcar.car.GlobalParams;
+import racingcar.car.Constant;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -26,12 +26,12 @@ public class RacingView {
     }
 
     private String getCarNames() {
-        System.out.println(GlobalParams.GUIDE_FOR_INPUT_CARNAME);
+        System.out.println(Constant.GUIDE_FOR_INPUT_CARNAME);
         return readLine();
     }
 
     private String getRacingNumber() {
-        System.out.println(GlobalParams.GUIDE_FOR_INPUT_RACINGNUMBER);
+        System.out.println(Constant.GUIDE_FOR_INPUT_RACINGNUMBER);
         return readLine();
     }
 
@@ -45,12 +45,12 @@ public class RacingView {
     private void printProgressPerCar(String carName, int location) {
         StringBuilder stringBuilder = new StringBuilder();
         for (int i = 0; i < location; i++)
-            stringBuilder.append(GlobalParams.PROGRESS_BAR);
-        System.out.println(carName + GlobalParams.PROGRESS_SPLITER + stringBuilder.toString());
+            stringBuilder.append(Constant.PROGRESS_BAR);
+        System.out.println(carName + Constant.PROGRESS_SPLITER + stringBuilder.toString());
     }
 
     public void printWinner(ArrayList<String> winnerList) {
-        System.out.println(GlobalParams.WINNER_GUIDE + String.join(GlobalParams.WINNER_SPLITER, winnerList));
+        System.out.println(Constant.WINNER_GUIDE + String.join(Constant.WINNER_SPLITER, winnerList));
     }
 
 }
