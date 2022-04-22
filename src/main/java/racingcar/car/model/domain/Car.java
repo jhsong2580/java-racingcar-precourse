@@ -7,8 +7,8 @@ public class Car {
     private int location;
     private String name;
 
-    protected Car(int location, String name) {
-        this.location = location;
+    public Car(String name) {
+        this.location = 0;
         this.name = name;
     }
 

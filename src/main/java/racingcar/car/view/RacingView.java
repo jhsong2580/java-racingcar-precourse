@@ -1,7 +1,7 @@
 package racingcar.car.view;
 
-import racingcar.car.GameStatus;
 import racingcar.car.Constant;
+import racingcar.car.GameStatus;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -10,12 +10,6 @@ import java.util.Map;
 import static camp.nextstep.edu.missionutils.Console.readLine;
 
 public class RacingView {
-    protected RacingView() {
-    }
-
-    public static RacingView createRacingView() {
-        return new RacingView();
-    }
 
     public String getInput(GameStatus gameStatus) {
         if (gameStatus == GameStatus.GET_CAR_NAME)

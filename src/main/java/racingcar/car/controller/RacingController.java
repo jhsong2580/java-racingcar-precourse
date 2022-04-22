@@ -9,13 +9,9 @@ public class RacingController {
     private final RacingModel racingModel;
     private final String ERROR_INPUT = "";
 
-    protected RacingController() {
-        this.racingView = RacingView.createRacingView();
-        this.racingModel = RacingModel.createModel();
-    }
-
-    public static RacingController createRacingController() {
-        return new RacingController();
+    public RacingController() {
+        this.racingView = new RacingView();
+        this.racingModel = new RacingModel();
     }
 
     public void startRace() {

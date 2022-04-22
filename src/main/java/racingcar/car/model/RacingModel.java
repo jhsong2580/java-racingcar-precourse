@@ -3,7 +3,6 @@ package racingcar.car.model;
 import racingcar.car.GameStatus;
 import racingcar.car.model.domain.CarsManager;
 import racingcar.car.model.validator.*;
-import racingcar.car.view.RacingView;
 
 import java.util.ArrayList;
 import java.util.LinkedHashMap;
@@ -13,12 +12,8 @@ public class RacingModel {
     private final List<Validator> validators = new ArrayList<>();
     private CarsManager carsManager;
 
-    protected RacingModel() {
+    public RacingModel() {
         getValidators();
-    }
-
-    public static RacingModel createModel() {
-        return new RacingModel();
     }
 
     private void getValidators() {
@@ -45,7 +40,7 @@ public class RacingModel {
     }
 
     public void createCars(String input) {
-        carsManager = CarsManager.createCars(input);
+        carsManager = new CarsManager(input);
     }
 
     public LinkedHashMap<String, Integer> move() {
