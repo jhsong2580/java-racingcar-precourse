@@ -2,6 +2,7 @@ package racingcar.car.view;
 
 import racingcar.car.GameStatus;
 import racingcar.car.constant.Constant;
+import racingcar.car.constant.MessageConstant;
 import racingcar.car.model.domain.Car;
 
 import java.util.ArrayList;
@@ -19,12 +20,12 @@ public class RacingView {
     }
 
     private String getCarNames() {
-        System.out.println(Constant.GUIDE_FOR_INPUT_CARNAME);
+        System.out.println(MessageConstant.GUIDE_FOR_INPUT_CARNAME);
         return readLine();
     }
 
     private String getRacingNumber() {
-        System.out.println(Constant.GUIDE_FOR_INPUT_RACINGNUMBER);
+        System.out.println(MessageConstant.GUIDE_FOR_INPUT_RACINGNUMBER);
         return readLine();
     }
 
@@ -47,7 +48,7 @@ public class RacingView {
         for (Car car : cars) {
             winnerNames.add(car.getName());
         }
-        System.out.println(Constant.WINNER_GUIDE + String.join(Constant.WINNER_DELIMITER, winnerNames));
+        System.out.println(MessageConstant.WINNER_GUIDE + String.join(Constant.WINNER_DELIMITER, winnerNames));
     }
 
 }
