@@ -15,8 +15,8 @@ public class RacingController {
     }
 
     public void startRace() {
-        racingModel.createCars(getInput(GameStatus.GET_CAR_NAME)); /* 차 이름 입력후 검증, racingModel에 Cars 설정 */
-        int racingNumber = Integer.parseInt(getInput(GameStatus.GET_RACING_NUMBER)); /* Racing 횟수 입력 후 검증, Int로 Cast */
+        racingModel.createCars(getInput(GameStatus.CAR_NAME)); /* 차 이름 입력후 검증, racingModel에 Cars 설정 */
+        int racingNumber = Integer.parseInt(getInput(GameStatus.RACING_NUMBER)); /* Racing 횟수 입력 후 검증, Int로 Cast */
         for (int racingCount = 0; racingCount < racingNumber; racingCount++) {
             racingView.printProgress(racingModel.move());
         }

@@ -31,7 +31,7 @@ public class RacingViewTest {
         OutputStream out = generateOutputStream();
 
         //when
-        String carNames = racingView.getInput(GameStatus.GET_CAR_NAME);
+        String carNames = racingView.getInput(GameStatus.CAR_NAME);
 
         //then
         assertThat(carNames)
@@ -49,7 +49,7 @@ public class RacingViewTest {
         InputStream in = generateInputStream(iSay);
         OutputStream out = generateOutputStream();
         //when
-        String racingNumber = racingView.getInput(GameStatus.GET_RACING_NUMBER);
+        String racingNumber = racingView.getInput(GameStatus.RACING_NUMBER);
         //then
         assertThat(racingNumber)
                 .isEqualTo(iSay);

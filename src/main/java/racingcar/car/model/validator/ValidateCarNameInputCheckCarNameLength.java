@@ -10,7 +10,7 @@ public class ValidateCarNameInputCheckCarNameLength implements Validator {
 
     @Override
     public boolean canValidate(GameStatus gameStatus) {
-        return gameStatus == GameStatus.GET_CAR_NAME;
+        return gameStatus == GameStatus.CAR_NAME;
     }
 
     @Override

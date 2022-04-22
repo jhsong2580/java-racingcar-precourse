@@ -8,7 +8,7 @@ public class ValidateCarNameInputSplitResultSizeMoreThanZero implements Validato
 
     @Override
     public boolean canValidate(GameStatus gameStatus) {
-        return gameStatus == GameStatus.GET_CAR_NAME;
+        return gameStatus == GameStatus.CAR_NAME;
     }
 
     @Override

@@ -8,7 +8,7 @@ public class ValidateRacingNumberInputRangeOverOne implements Validator {
 
     @Override
     public boolean canValidate(GameStatus gameStatus) {
-        return gameStatus == GameStatus.GET_RACING_NUMBER;
+        return gameStatus == GameStatus.RACING_NUMBER;
     }
 
     @Override
