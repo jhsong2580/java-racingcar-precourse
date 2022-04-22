@@ -1,7 +1,8 @@
 package racingcar.car.model.validator;
 
-import racingcar.car.Constant;
 import racingcar.car.GameStatus;
+import racingcar.car.constant.Constant;
+import racingcar.car.constant.ErrorMessageConstant;
 
 public class ValidateCarNameInputCheckCarNameLength implements Validator {
     private final int NAME_MAX_LENGTH = 5;
@@ -24,7 +25,7 @@ public class ValidateCarNameInputCheckCarNameLength implements Validator {
 
     private boolean validateNameLength(String name) {
         if (name.length() > NAME_MAX_LENGTH || name.length() < NAME_MIN_LENGTH) {
-            System.out.println(Constant.ERROR_COMMENT_CAR_NAME_LENGTH);
+            System.out.println(ErrorMessageConstant.ERROR_COMMENT_CAR_NAME_LENGTH);
             return false;
         }
         return true;

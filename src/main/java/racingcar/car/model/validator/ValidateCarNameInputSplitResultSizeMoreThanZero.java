@@ -1,7 +1,8 @@
 package racingcar.car.model.validator;
 
-import racingcar.car.Constant;
 import racingcar.car.GameStatus;
+import racingcar.car.constant.Constant;
+import racingcar.car.constant.ErrorMessageConstant;
 
 public class ValidateCarNameInputSplitResultSizeMoreThanZero implements Validator {
 
@@ -16,7 +17,7 @@ public class ValidateCarNameInputSplitResultSizeMoreThanZero implements Validato
         String[] names = input.trim().split(Constant.CAR_NAMES_DELIMITER);
         if (names.length == 0) {
             validateResult = false;
-            System.out.println(Constant.ERROR_COMMENT_CAR_NAME_COUNT);
+            System.out.println(ErrorMessageConstant.ERROR_COMMENT_CAR_NAME_COUNT);
         }
         return validateResult;
     }

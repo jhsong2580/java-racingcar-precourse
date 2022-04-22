@@ -1,7 +1,7 @@
 package racingcar.car.model.validator;
 
-import racingcar.car.Constant;
 import racingcar.car.GameStatus;
+import racingcar.car.constant.ErrorMessageConstant;
 
 public class ValidateRacingNumberIntputCannotParseInteger implements Validator {
 
@@ -17,7 +17,7 @@ public class ValidateRacingNumberIntputCannotParseInteger implements Validator {
             Integer.parseInt(input);
         } catch (IllegalArgumentException e) {
             validateResult = false;
-            System.out.println(Constant.ERROR_COMMENT_RACING_NUMBER_PARSE);
+            System.out.println(ErrorMessageConstant.ERROR_COMMENT_RACING_NUMBER_PARSE);
         }
         return validateResult;
     }

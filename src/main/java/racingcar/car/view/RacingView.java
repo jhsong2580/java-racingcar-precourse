@@ -1,6 +1,6 @@
 package racingcar.car.view;
 
-import racingcar.car.Constant;
+import racingcar.car.constant.Constant;
 import racingcar.car.GameStatus;
 import racingcar.car.model.domain.Car;
 
@@ -39,7 +39,7 @@ public class RacingView {
         StringBuilder stringBuilder = new StringBuilder();
         for (int i = 0; i < car.getLocation(); i++)
             stringBuilder.append(Constant.PROGRESS_BAR);
-        System.out.println(car.getName() + Constant.PROGRESS_SPLITER + stringBuilder.toString());
+        System.out.println(car.getName() + Constant.PROGRESS_DELIMITER + stringBuilder.toString());
     }
 
     public void printWinner(ArrayList<Car> cars) {
@@ -47,7 +47,7 @@ public class RacingView {
         for (Car car : cars) {
             winnerNames.add(car.getName());
         }
-        System.out.println(Constant.WINNER_GUIDE + String.join(Constant.WINNER_SPLITER, winnerNames));
+        System.out.println(Constant.WINNER_GUIDE + String.join(Constant.WINNER_DELIMITER, winnerNames));
     }
 
 }

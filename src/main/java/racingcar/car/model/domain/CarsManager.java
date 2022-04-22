@@ -1,6 +1,6 @@
 package racingcar.car.model.domain;
 
-import racingcar.car.Constant;
+import racingcar.car.constant.Constant;
 
 import java.util.ArrayList;
 import java.util.LinkedHashMap;
