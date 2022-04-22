@@ -1,7 +1,5 @@
 package racingcar.car.model.domain;
 
-import racingcar.car.constant.Constant;
-
 public class Car {
     private final int CAR_MOVE_CONDITION = 4;
     private int location;
@@ -35,9 +33,4 @@ public class Car {
         return 1 & Boolean.hashCode(flag) >> 1;
     }
 
-    public String getNameEqualExactlyLocation(int maxLocation) {
-        if (location == maxLocation)
-            return name;
-        return Constant.CAR_IS_NOTMATCHING;
-    }
 }
