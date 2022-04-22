@@ -1,11 +1,10 @@
 package racingcar.car.model.validator;
 
+import racingcar.car.Constant;
 import racingcar.car.GameStatus;
-import racingcar.car.error.Error;
 
 public class ValidateRacingNumberInputRangeOverOne implements Validator {
     private final int INPUT_LIMIT = 1;
-    private final String ERROR_MESSAGE = Error.createErrorComment("시도 횟수는 양수여야 합니다.");
 
     @Override
     public boolean canValidate(GameStatus gameStatus) {
@@ -17,7 +16,7 @@ public class ValidateRacingNumberInputRangeOverOne implements Validator {
         boolean validateResult = true;
         int inputParseInt = Integer.parseInt(input);
         if (inputParseInt < INPUT_LIMIT) {
-            System.out.println(ERROR_MESSAGE);
+            System.out.println(Constant.ERROR_COMMENT_RACING_NUMBER_RANGE);
             validateResult = false;
         }
         return validateResult;

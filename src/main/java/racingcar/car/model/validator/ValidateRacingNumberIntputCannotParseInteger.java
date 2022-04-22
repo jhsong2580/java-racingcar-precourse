@@ -1,10 +1,9 @@
 package racingcar.car.model.validator;
 
+import racingcar.car.Constant;
 import racingcar.car.GameStatus;
-import racingcar.car.error.Error;
 
 public class ValidateRacingNumberIntputCannotParseInteger implements Validator {
-    private final String ERROR_MESSAGE = Error.createErrorComment("시도 횟수는 숫자여야 합니다.");
 
     @Override
     public boolean canValidate(GameStatus gameStatus) {
@@ -18,7 +17,7 @@ public class ValidateRacingNumberIntputCannotParseInteger implements Validator {
             Integer.parseInt(input);
         } catch (IllegalArgumentException e) {
             validateResult = false;
-            System.out.println(ERROR_MESSAGE);
+            System.out.println(Constant.ERROR_COMMENT_RACING_NUMBER_PARSE);
         }
         return validateResult;
     }
