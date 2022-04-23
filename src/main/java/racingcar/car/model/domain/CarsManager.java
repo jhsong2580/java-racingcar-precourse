@@ -25,7 +25,6 @@ public class CarsManager {
     }
 
     public ArrayList<Car> move() {
-        LinkedHashMap<String, Integer> result = new LinkedHashMap<>();
         for (Car car : cars) {
             car.move(pickNumberInRange(Constant.RANGE_FOR_CAR_MOVING_MIN, Constant.RANGE_FOR_CAR_MOVING_MAX));
         }
