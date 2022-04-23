@@ -1,5 +1,7 @@
 package racingcar.car.model.domain;
 
+import racingcar.car.model.CarDTO;
+
 public class Car {
     private final int CAR_MOVE_CONDITION = 4;
     private int location;
@@ -10,10 +12,8 @@ public class Car {
         this.name = name;
     }
 
-    public Car carDeepCopy() {
-        Car copyResult = new Car(this.name);
-        copyResult.location = this.location;
-        return copyResult;
+    public CarDTO carToDTO() {
+        return new CarDTO(this.name, this.location);
     }
 
     public int getLocation() {

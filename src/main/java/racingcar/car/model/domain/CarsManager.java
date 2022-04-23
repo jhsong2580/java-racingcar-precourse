@@ -1,9 +1,9 @@
 package racingcar.car.model.domain;
 
 import racingcar.car.constant.Constant;
+import racingcar.car.model.CarDTO;
 
 import java.util.ArrayList;
-import java.util.LinkedHashMap;
 import java.util.List;
 
 import static camp.nextstep.edu.missionutils.Randoms.pickNumberInRange;
@@ -24,20 +24,20 @@ public class CarsManager {
         return cars;
     }
 
-    public ArrayList<Car> move() {
+    public ArrayList<CarDTO> move() {
         for (Car car : cars) {
             car.move(pickNumberInRange(Constant.RANGE_FOR_CAR_MOVING_MIN, Constant.RANGE_FOR_CAR_MOVING_MAX));
         }
-        return carsDeepCopy();
+        return getCarDTOList();
     }
 
-    public ArrayList<Car> electWinner() {
+    public ArrayList<CarDTO> electWinner() {
         int maxLocation = getMaxLocation();
         return getWinnerList(maxLocation);
     }
 
-    private ArrayList<Car> getWinnerList(int scoreForWin) {
-        ArrayList<Car> carsCopy = carsDeepCopy();
+    private ArrayList<CarDTO> getWinnerList(int scoreForWin) {
+        ArrayList<CarDTO> carsCopy = getCarDTOList();
         carsCopy.removeIf(car -> car.getLocation() != scoreForWin);
         return carsCopy;
     }
@@ -50,10 +50,10 @@ public class CarsManager {
         return maxLocation;
     }
 
-    private ArrayList<Car> carsDeepCopy() {
-        ArrayList<Car> carsCopy = new ArrayList<>();
+    private ArrayList<CarDTO> getCarDTOList() {
+        ArrayList<CarDTO> carsCopy = new ArrayList<>();
         for (Car car : cars) {
-            carsCopy.add(car.carDeepCopy());
+            carsCopy.add(car.carToDTO());
         }
         return carsCopy;
     }

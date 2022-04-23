@@ -3,7 +3,7 @@ package racingcar.car.view;
 import racingcar.car.GameStatus;
 import racingcar.car.constant.Constant;
 import racingcar.car.constant.MessageConstant;
-import racingcar.car.model.domain.Car;
+import racingcar.car.model.CarDTO;
 
 import java.util.ArrayList;
 
@@ -29,23 +29,23 @@ public class RacingView {
         return readLine();
     }
 
-    public void printProgress(ArrayList<Car> cars) {
-        for (Car car : cars) {
+    public void printProgress(ArrayList<CarDTO> cars) {
+        for (CarDTO car : cars) {
             printProgressPerCar(car);
         }
         System.out.println();
     }
 
-    private void printProgressPerCar(Car car) {
+    private void printProgressPerCar(CarDTO car) {
         StringBuilder stringBuilder = new StringBuilder();
         for (int i = 0; i < car.getLocation(); i++)
             stringBuilder.append(Constant.PROGRESS_BAR);
         System.out.println(car.getName() + Constant.PROGRESS_DELIMITER + stringBuilder.toString());
     }
 
-    public void printWinner(ArrayList<Car> cars) {
+    public void printWinner(ArrayList<CarDTO> cars) {
         ArrayList<String> winnerNames = new ArrayList<>();
-        for (Car car : cars) {
+        for (CarDTO car : cars) {
             winnerNames.add(car.getName());
         }
         System.out.println(MessageConstant.WINNER_GUIDE + String.join(Constant.WINNER_DELIMITER, winnerNames));

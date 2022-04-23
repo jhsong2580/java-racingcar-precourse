@@ -6,11 +6,10 @@ import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
 import racingcar.Application;
-import racingcar.car.model.domain.Car;
+import racingcar.car.model.CarDTO;
 import racingcar.car.model.domain.CarsManager;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 
 import static camp.nextstep.edu.missionutils.test.Assertions.assertRandomNumberInRangeTest;
 import static org.assertj.core.api.Assertions.assertThat;
@@ -44,7 +43,7 @@ public class CarsManagerTest extends NsTest {
     @Test
     public void Cars를통한CarMove호출() {
         assertRandomNumberInRangeTest(() -> {
-            ArrayList<Car> moveResult = cars.move();
+            ArrayList<CarDTO> moveResult = cars.move();
             assertThat(moveResult.get(0).getLocation())
                     .isEqualTo(6);
             assertThat(moveResult.get(1).getLocation())
@@ -56,7 +55,7 @@ public class CarsManagerTest extends NsTest {
 
     @Test
     public void Car우승자_단일추출() {
-        ArrayList<Car> winnerList = this.cars.electWinner();
+        ArrayList<CarDTO> winnerList = this.cars.electWinner();
         assertThat(winnerList.get(0).getName()).isEqualTo("c3");
     }
 
@@ -65,14 +64,14 @@ public class CarsManagerTest extends NsTest {
         assertRandomNumberInRangeTest(() -> {
             cars.move();
         }, 3, 4, 3);
-        ArrayList<Car> winnerList_1stTry = this.cars.electWinner();
+        ArrayList<CarDTO> winnerList_1stTry = this.cars.electWinner();
         assertThat(winnerList_1stTry.get(0).getName()).isEqualTo("c2");
         assertThat(winnerList_1stTry.get(1).getName()).isEqualTo("c3");
 
         assertRandomNumberInRangeTest(() -> {
             this.cars.move();
         }, 4, 3, 3);
-        ArrayList<Car> winnerList_2ndTry = this.cars.electWinner();
+        ArrayList<CarDTO> winnerList_2ndTry = this.cars.electWinner();
         assertThat(winnerList_2ndTry.get(0).getName()).isEqualTo("c1");
         assertThat(winnerList_2ndTry.get(1).getName()).isEqualTo("c2");
         assertThat(winnerList_2ndTry.get(2).getName()).isEqualTo("c3");

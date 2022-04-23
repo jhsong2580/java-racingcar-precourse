@@ -5,7 +5,7 @@ import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
 import racingcar.car.GameStatus;
-import racingcar.car.model.domain.Car;
+import racingcar.car.model.CarDTO;
 import racingcar.car.view.RacingView;
 
 import java.io.*;
@@ -60,17 +60,14 @@ public class RacingViewTest {
     @Test
     public void 차수별_실행결과_출력() {
         //given
-        ArrayList<Car> cars = new ArrayList<>();
-        Car c1 = new Car("c1");
-        Car c2 = new Car("c2");
+        ArrayList<CarDTO> cars = new ArrayList<>();
+        CarDTO c1 = new CarDTO("c1", 5);
+        CarDTO c2 = new CarDTO("c2", 2);
         cars.add(c1);
         cars.add(c2);
         OutputStream out = generateOutputStream();
         //when
-        for (int i = 0; i < 5; i++)
-            c1.move(4);
-        for (int i = 0; i < 2; i++)
-            c2.move(4);
+
         racingView.printProgress(cars);
         //then
         assertThat(out.toString().trim())
@@ -80,8 +77,8 @@ public class RacingViewTest {
     @Test
     public void 우승자_실행_단일출력() {
         //given
-        ArrayList<Car> winners = new ArrayList<>();
-        winners.add(new Car("c1"));
+        ArrayList<CarDTO> winners = new ArrayList<>();
+        winners.add(new CarDTO("c1", 2));
         OutputStream out = generateOutputStream();
         //when
         racingView.printWinner(winners);
@@ -93,9 +90,9 @@ public class RacingViewTest {
     @Test
     public void 우승자_실행_다수출력() {
         //given
-        ArrayList<Car> cars = new ArrayList<>();
-        cars.add(new Car("c1"));
-        cars.add(new Car("c2"));
+        ArrayList<CarDTO> cars = new ArrayList<>();
+        cars.add(new CarDTO("c1", 2));
+        cars.add(new CarDTO("c2", 2));
         OutputStream out = generateOutputStream();
         //when
         racingView.printWinner(cars);

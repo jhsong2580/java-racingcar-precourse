@@ -1,7 +1,6 @@
 package racingcar.car.model;
 
 import racingcar.car.GameStatus;
-import racingcar.car.model.domain.Car;
 import racingcar.car.model.domain.CarsManager;
 import racingcar.car.model.validator.*;
 
@@ -40,11 +39,11 @@ public class RacingModel {
         carsManager = new CarsManager(input);
     }
 
-    public ArrayList<Car> move() {
+    public ArrayList<CarDTO> move() {
         return carsManager.move();
     }
 
-    public ArrayList<Car> electWinner() {
+    public ArrayList<CarDTO> electWinner() {
         return carsManager.electWinner();
     }
 }
