@@ -15,10 +15,8 @@ public class ValidateCarNameInputSplitResultSizeMoreThanZero implements Validato
     public boolean validate(String input) {
         boolean validateResult = true;
         String[] names = input.trim().split(Constant.CAR_NAMES_DELIMITER);
-        if (names.length == 0) {
-            validateResult = false;
-            System.out.println(ErrorMessageConstant.ERROR_COMMENT_CAR_NAME_COUNT);
-        }
+        if (names.length == 0)
+            throw new IllegalArgumentException(ErrorMessageConstant.ERROR_COMMENT_CAR_NAME_COUNT);
         return validateResult;
     }
 }

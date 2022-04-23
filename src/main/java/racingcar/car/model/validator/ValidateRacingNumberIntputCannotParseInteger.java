@@ -16,8 +16,7 @@ public class ValidateRacingNumberIntputCannotParseInteger implements Validator {
         try {
             Integer.parseInt(input);
         } catch (IllegalArgumentException e) {
-            validateResult = false;
-            System.out.println(ErrorMessageConstant.ERROR_COMMENT_RACING_NUMBER_PARSE);
+            throw new IllegalArgumentException(ErrorMessageConstant.ERROR_COMMENT_RACING_NUMBER_PARSE);
         }
         return validateResult;
     }

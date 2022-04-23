@@ -20,12 +20,13 @@ public class ValidateCarNameInputCheckCarNameLength implements Validator {
         for (int i = 0; i < names.length && validateResult; i++) {
             validateResult = validateResult && validateNameLength(names[i]);
         }
+        if (validateResult == false)
+            throw new IllegalArgumentException(ErrorMessageConstant.ERROR_COMMENT_CAR_NAME_LENGTH);
         return validateResult;
     }
 
     private boolean validateNameLength(String name) {
         if (name.length() > NAME_MAX_LENGTH || name.length() < NAME_MIN_LENGTH) {
-            System.out.println(ErrorMessageConstant.ERROR_COMMENT_CAR_NAME_LENGTH);
             return false;
         }
         return true;

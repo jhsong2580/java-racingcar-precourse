@@ -36,6 +36,7 @@ public class RacingController {
         try {
             input = racingModel.validateInput(racingView.getInput(gameStatus), gameStatus);
         } catch (IllegalArgumentException e) {
+            System.out.println(e.getMessage());
             input = ERROR_INPUT;
         }
         return input;

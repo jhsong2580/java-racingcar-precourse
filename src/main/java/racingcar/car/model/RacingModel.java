@@ -24,12 +24,9 @@ public class RacingModel {
     }
 
     public String validateInput(String input, GameStatus gameStatus) {
-        boolean validateResult = true;
-        for (int i = 0; i < validators.size() && validateResult; i++) {
-            validateResult = validateResult && executeValidate(validators.get(i), gameStatus, input);
+        for (Validator validator : validators) {
+            executeValidate(validator, gameStatus, input);
         }
-        if (validateResult == false)
-            throw new IllegalArgumentException();
         return input;
     }
 

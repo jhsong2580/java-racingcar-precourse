@@ -15,10 +15,8 @@ public class ValidateRacingNumberInputRangeOverOne implements Validator {
     public boolean validate(String input) {
         boolean validateResult = true;
         int inputParseInt = Integer.parseInt(input);
-        if (inputParseInt < INPUT_LIMIT) {
-            System.out.println(ErrorMessageConstant.ERROR_COMMENT_RACING_NUMBER_RANGE);
-            validateResult = false;
-        }
+        if (inputParseInt < INPUT_LIMIT)
+            throw new IllegalArgumentException(ErrorMessageConstant.ERROR_COMMENT_RACING_NUMBER_RANGE);
         return validateResult;
     }
 }
