@@ -3,7 +3,7 @@ package racingcar.car.view;
 import racingcar.car.GameStatus;
 import racingcar.car.constant.Constant;
 import racingcar.car.constant.MessageConstant;
-import racingcar.car.model.CarDTO;
+import racingcar.car.model.dto.CarDTO;
 
 import java.util.ArrayList;
 

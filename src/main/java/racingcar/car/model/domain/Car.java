@@ -1,6 +1,6 @@
 package racingcar.car.model.domain;
 
-import racingcar.car.model.CarDTO;
+import racingcar.car.model.dto.CarDTO;
 
 public class Car {
     private final int CAR_MOVE_CONDITION = 4;

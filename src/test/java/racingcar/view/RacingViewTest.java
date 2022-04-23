@@ -5,7 +5,7 @@ import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
 import racingcar.car.GameStatus;
-import racingcar.car.model.CarDTO;
+import racingcar.car.model.dto.CarDTO;
 import racingcar.car.view.RacingView;
 
 import java.io.*;

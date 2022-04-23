@@ -1,7 +1,7 @@
 package racingcar.car.model.domain;
 
 import racingcar.car.constant.Constant;
-import racingcar.car.model.CarDTO;
+import racingcar.car.model.dto.CarDTO;
 
 import java.util.ArrayList;
 import java.util.List;

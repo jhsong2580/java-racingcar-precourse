@@ -2,6 +2,7 @@ package racingcar.car.model;
 
 import racingcar.car.GameStatus;
 import racingcar.car.model.domain.CarsManager;
+import racingcar.car.model.dto.CarDTO;
 import racingcar.car.model.validator.*;
 
 import java.util.ArrayList;
