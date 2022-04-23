@@ -3,34 +3,27 @@ package racingcar.car.model.domain;
 import racingcar.car.model.dto.CarDTO;
 
 public class Car {
-    private final int CAR_MOVE_CONDITION = 4;
-    private int location;
-    private String name;
+    private final Location location;
+    private final Name name;
 
     public Car(String name) {
-        this.location = 0;
-        this.name = name;
+        this.location = new Location(0);
+        this.name = new Name(name);
     }
 
     public CarDTO carToDTO() {
-        return new CarDTO(this.name, this.location);
+        return new CarDTO(this.name.getName(), this.location.getLocation());
     }
 
     public int getLocation() {
-        return location;
+        return location.getLocation();
     }
 
     public String getName() {
-        return name;
+        return name.getName();
     }
 
-    public int move(int input) {
-        location += getIntFromBoolean(input >= CAR_MOVE_CONDITION);
-        return location;
+    public void move(int input) {
+        location.move(input);
     }
-
-    private int getIntFromBoolean(boolean flag) {/* 반환값 : 1(flag = true), 0(flag = false) */
-        return 1 & Boolean.hashCode(flag) >> 1;
-    }
-
 }

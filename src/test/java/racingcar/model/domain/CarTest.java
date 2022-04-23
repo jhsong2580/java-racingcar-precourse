@@ -33,13 +33,13 @@ public class CarTest {
     @CsvSource(value = {"4:1", "5:1", "6:1", "7:1", "8:1", "9:1", "0:0", "1:0", "2:0", "3:0"}, delimiter = ':')
     public void Car이동시키기(int moveForRandomInput, int locationResult) {
         //given
-        int t1Location = t1.move(moveForRandomInput);
-        int t2Location = t2.move(moveForRandomInput);
-        int t3Location = t3.move(moveForRandomInput);
+        t1.move(moveForRandomInput);
+        t2.move(moveForRandomInput);
+        t3.move(moveForRandomInput);
         //when
-        assertThat(t1Location).isEqualTo(locationResult);
-        assertThat(t2Location).isEqualTo(locationResult);
-        assertThat(t3Location).isEqualTo(locationResult);
+        assertThat(t1.getLocation()).isEqualTo(locationResult);
+        assertThat(t2.getLocation()).isEqualTo(locationResult);
+        assertThat(t3.getLocation()).isEqualTo(locationResult);
         //then
     }
 
@@ -51,7 +51,8 @@ public class CarTest {
 
         //then
         for (int i = 0; i < inputs.size(); i++) {
-            assertThat(t1.move(inputs.get(i))).isEqualTo(positions.get(i));
+            t1.move(inputs.get(i));
+            assertThat(t1.getLocation()).isEqualTo(positions.get(i));
         }
     }
 }
